@@ -8,11 +8,10 @@ function App() {
 		backend.init();
 	}, []);
 
-	//const [userName, setUserName] = useState<string>('kalish');
 	const [counter, setCounter] = useState<number>(0);
 
 	const goInc = () => {
-		backend.addOne(counter, (newVal: number) => {
+		backend.addOne(counter, newVal => {
 			setCounter(newVal);
 		});
 	};
