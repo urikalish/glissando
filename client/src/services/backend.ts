@@ -10,11 +10,14 @@ export class Backend {
 		this.socket = socketIOClient('');
 	}
 
-	addOne(curVal: number, cb: (newVal: number) => void) {
-		this.socket.on('s2c-add-one', (data: {val: number}) => {
-			cb(data.val);
+	async addOne(curVal: number): Promise<number> {
+		return new Promise((resolve, reject) => {
+			this.socket.on('s2c-add-one', (data: {val: number}) => {
+				this.socket.off('s2c-add-one');
+				resolve(data.val);
+			});
+			this.socket.emit('c2s-add-one', {val: curVal});
 		});
-		this.socket.emit('c2s-add-one', {val: curVal});
 	};
 }
 

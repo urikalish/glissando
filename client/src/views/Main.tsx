@@ -5,10 +5,9 @@ export function Main() {
 
 	const [counter, setCounter] = useState<number>(0);
 
-	const goInc = () => {
-		backend.addOne(counter, newVal => {
-			setCounter(newVal);
-		});
+	const goInc = async () => {
+		const newVal = await backend.addOne(counter);
+		setCounter(newVal);
 	};
 
 	return (
