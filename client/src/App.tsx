@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import {backend} from "./backend/backend";
+import {backend} from "./services/backend";
+import {Main} from "./components/Main";
 
 function App() {
 
@@ -8,20 +9,9 @@ function App() {
 		backend.init();
 	}, []);
 
-	const [counter, setCounter] = useState<number>(0);
-
-	const goInc = () => {
-		backend.addOne(counter, newVal => {
-			setCounter(newVal);
-		});
-	};
-
     return (
-	    <div className="App">
-		    <div>{counter}</div>
-		    <button onClick={goInc}>Inc</button>
-	    </div>
-    );
+        <Main/>
+    )
 }
 
 export default App;
