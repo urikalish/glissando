@@ -1,22 +1,28 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import {AddOneResult, Backend} from "./backend";
+import {backend} from "./backend/backend";
 
 function App() {
 
-  const [counter, setCounter] = useState<number>(0);
+	useEffect(() => {
+		backend.init();
+	}, []);
 
-  const goInc = async () => {
-  	const addOneRes: AddOneResult = await Backend.addOne(counter);
-    setCounter(addOneRes.data);
-  };
+	//const [userName, setUserName] = useState<string>('kalish');
+	const [counter, setCounter] = useState<number>(0);
 
-  return (
-    <div className="App">
-	    <div>{counter}</div>
-	    <button onClick={goInc}>Inc</button>
-    </div>
-  );
+	const goInc = () => {
+		backend.addOne(counter, (newVal: number) => {
+			setCounter(newVal);
+		});
+	};
+
+    return (
+	    <div className="App">
+		    <div>{counter}</div>
+		    <button onClick={goInc}>Inc</button>
+	    </div>
+    );
 }
 
 export default App;
