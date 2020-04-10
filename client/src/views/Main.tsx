@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {backend} from "../services/backend";
+import Button from "@material-ui/core/Button";
+import PlusOne from "@material-ui/icons/PlusOne";
 
 export function Main() {
 
@@ -13,7 +15,8 @@ export function Main() {
 	return (
 		<div className="App">
 			<div>{counter}</div>
-			<button onClick={goInc}>Inc</button>
+			<PlusOne/>
+			<Button onClick={goInc} variant="contained" color="primary">Inc</Button>
 		</div>
 	);
 }
