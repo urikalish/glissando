@@ -12,11 +12,15 @@ export class Backend {
 
 	async addOne(curVal: number): Promise<number> {
 		return new Promise((resolve, reject) => {
-			this.socket.on('s2c-add-one', (data: {val: number}) => {
-				this.socket.off('s2c-add-one');
-				resolve(data.val);
-			});
-			this.socket.emit('c2s-add-one', {val: curVal});
+			try {
+				this.socket.on('s2c-add-one', (data: {val: number}) => {
+					this.socket.off('s2c-add-one');
+					resolve(data.val);
+				});
+				this.socket.emit('c2s-add-one', {val: curVal});
+			} catch(err) {
+				reject(err);
+			}
 		});
 	};
 }
