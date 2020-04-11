@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import React from 'react';
 import './App.css';
-import { Home } from './views/Home';
-import { Create } from './views/Create';
-import { Join } from './views/Join';
-import { Run } from './views/Run';
+import {Home} from './views/Home';
+import {Create} from './views/Create';
+import {Join} from './views/Join';
+import {Run} from './views/Run';
 
 function App() {
 	return (

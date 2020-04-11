@@ -11,9 +11,9 @@ const onGetRequest = (req, res) => {
 	res.send('Hi from the server');
 };
 
-const handleClients = (io) => {
+const handleClients = io => {
 	const glissandoClients = {};
-	io.on('connection', (socket) => {
+	io.on('connection', socket => {
 		logger.log(`socket ${socket.id} connected`);
 		const glissandoClient = clientFactory.createClient();
 		glissandoClients[socket.id] = glissandoClient;
@@ -25,7 +25,7 @@ const handleClients = (io) => {
 			delete glissandoClients[socket.id];
 		});
 
-		socket.on('c2s-add-one', (data) => {
+		socket.on('c2s-add-one', data => {
 			glissandoClient.onMsgAddOne(data);
 		});
 	});
@@ -36,9 +36,9 @@ exports.startServer = () => {
 	const expressApp = express();
 	expressApp.use(express.static(PUBLIC_DIR));
 	expressApp.get('/', onGetRequest);
-	const expressServer = expressApp.listen(port, () =>
-		logger.log(`listening on port ${port}`),
-	);
+	const expressServer = expressApp.listen(port, () => {
+		logger.log(`listening on port ${port}`);
+	});
 	const io = socketIo(expressServer);
 	handleClients(io);
 };

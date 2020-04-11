@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import PlusOne from '@material-ui/icons/PlusOne';
-import { useBackend } from '../hooks/useBackend';
-import { Link } from 'react-router-dom';
+import {useBackend} from '../hooks/useBackend';
+import {Link} from 'react-router-dom';
 
 export function Home() {
 	const [counter, setCounter] = useState<number>(0);
-	const { backendCounter, incBackendCounter } = useBackend();
+	const {backendCounter, incBackendCounter} = useBackend();
 
 	const goInc = async () => {
 		incBackendCounter(counter);

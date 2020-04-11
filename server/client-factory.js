@@ -31,6 +31,6 @@ class GlissandoClient {
 	}
 }
 
-exports.createClient = (socket) => {
+exports.createClient = socket => {
 	return new GlissandoClient(socket);
 };
