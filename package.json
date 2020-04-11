@@ -7,8 +7,8 @@
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "format": "prettier --write --config .prettierrc.json \"**/*.tsx\"",
-    "lint": "eslint --fix --config .eslintrc.json \"app/**/*.js\"",
+    "format": "prettier --write --config .prettierrc.json \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint --fix --config .eslintrc.json \"server/**/*.js\"",
     "test": "echo \"No test specified\" && exit 1"
   },
   "repository": {
