@@ -7,31 +7,20 @@ const PUBLIC_DIR = 'public';
 const DEFAULT_PORT = 5000;
 const port = process.env.PORT || DEFAULT_PORT;
 
-let expressServer;
-
 const onGetRequest = (req, res) => {
 	res.send('Hi from the server');
 };
 
-const startServer = () => {
-	logger.log('start server');
-	const expressApp = express();
-	expressApp.use(express.static(PUBLIC_DIR));
-	expressApp.get('/', onGetRequest);
-	expressServer = expressApp.listen(port, () =>
-		logger.log(`listening on port ${port}`),
-	);
-};
-
-const handleClients = () => {
+const handleClients = (io) => {
 	const glissandoClients = {};
-	const io = socketIo(expressServer);
 	io.on('connection', (socket) => {
+		logger.log(`socket ${socket.id} connected`);
 		const glissandoClient = clientFactory.createClient();
 		glissandoClients[socket.id] = glissandoClient;
 		glissandoClient.onConnect(socket);
 
 		socket.on('disconnect', () => {
+			logger.log(`socket ${socket.id} disconnected`);
 			glissandoClient.onDisconnect();
 			delete glissandoClients[socket.id];
 		});
@@ -42,7 +31,14 @@ const handleClients = () => {
 	});
 };
 
-exports.go = () => {
-	startServer();
-	handleClients();
+exports.startServer = () => {
+	logger.log('start server');
+	const expressApp = express();
+	expressApp.use(express.static(PUBLIC_DIR));
+	expressApp.get('/', onGetRequest);
+	const expressServer = expressApp.listen(port, () =>
+		logger.log(`listening on port ${port}`),
+	);
+	const io = socketIo(expressServer);
+	handleClients(io);
 };

@@ -3,28 +3,23 @@ const helper = require('./helper');
 
 class GlissandoClient {
 	constructor() {
-		this.id = helper.generateRandomId();
-		this.name = helper.generateRandomName(6);
+		this.id = helper.generateRandomName(6);
 		this.socket = null;
-		this.socketId = -1;
+		this.socketId = '';
 		this.isConnected = false;
-		logger.log(`client created. id:${this.id}, name:${this.name}`);
+		logger.log(`client ${this.id} created`);
 	}
 
 	onConnect(socket) {
 		this.socket = socket;
 		this.socketId = socket.id;
 		this.isConnected = true;
-		logger.log(
-			`client connected. id:${this.id}, name:${this.name}, socket:${this.socketId}`,
-		);
+		logger.log(`client ${this.id} connected to socket ${this.socketId}`);
 	}
 
 	onDisconnect() {
 		this.isConnected = false;
-		logger.log(
-			`client disconnected. id:${this.id}, name:${this.name}, socket:${this.socketId}`,
-		);
+		logger.log(`client ${this.id} disconnected from socket ${this.socketId}`);
 	}
 
 	onMsgAddOne(data) {
