@@ -1,7 +1,7 @@
 {
-  "name": "pixel-glissando",
+  "name": "glissando",
   "version": "1.0.0",
-  "description": "Pixel Glissando",
+  "description": "Glissando",
   "main": "index.js",
   "scripts": {
     "client": "cd client && yarn start",
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pixel-glissando/pixel-glissando.git"
+    "url": "git+https://github.com/pixel-glissando/glissando.git"
   },
   "author": "Uri Kalish",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/pixel-glissando/pixel-glissando/issues"
+    "url": "https://github.com/pixel-glissando/glissando/issues"
   },
-  "homepage": "https://github.com/pixel-glissando/pixel-glissando#readme",
+  "homepage": "https://github.com/pixel-glissando/glissando#readme",
   "dependencies": {
     "express": "^4.17.1",
     "husky": "^4.2.5",

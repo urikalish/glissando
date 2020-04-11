@@ -1,1 +1,1 @@
-# pixel-glissando
+# glissando
