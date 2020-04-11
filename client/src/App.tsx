@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {Home} from './views/Home';
 import {Create} from './views/Create';
@@ -7,11 +7,6 @@ import {Join} from './views/Join';
 import {Run} from './views/Run';
 
 function App() {
-
-	useEffect(() => {
-		console.log('React app started');
-	}, []);
-
     return (
     <Router>
 	    <div className="App">
