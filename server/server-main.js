@@ -18,11 +18,13 @@ const handleClients = io => {
 		const glissandoClient = clientFactory.createClient();
 		glissandoClients[socket.id] = glissandoClient;
 		glissandoClient.onConnect(socket);
+		logger.log(`${Object.keys(glissandoClients).length} clients connected`);
 
 		socket.on('disconnect', () => {
 			logger.log(`socket ${socket.id} disconnected`);
 			glissandoClient.onDisconnect();
 			delete glissandoClients[socket.id];
+			logger.log(`${Object.keys(glissandoClients).length} clients connected`);
 		});
 
 		socket.on('c2s-add-one', data => {
