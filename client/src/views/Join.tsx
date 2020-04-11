@@ -8,7 +8,7 @@ export function Join() {
 		<div>Join</div>
 		<ul>
 			<li>
-				<Link to="/home">Home</Link>
+				<Link to="/">Home</Link>
 			</li>
 			<li>
 				<Link to="/create">Create</Link>

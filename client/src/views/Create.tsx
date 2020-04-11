@@ -8,7 +8,7 @@ export function Create() {
 		<div>Create</div>
 		<ul>
 			<li>
-				<Link to="/home">Home</Link>
+				<Link to="/">Home</Link>
 			</li>
 			<li>
 				<Link to="/join">Join</Link>
