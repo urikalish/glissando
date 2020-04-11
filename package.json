@@ -7,6 +7,8 @@
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "format": "prettier --write --config .prettierrc.json \"**/*.tsx\"",
+    "lint": "eslint --fix --config .eslintrc.json \"app/**/*.js\"",
     "test": "echo \"No test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +28,11 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "nodemon": "^2.0.3"
+    "eslint-config-formidable": "^4.0.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.4",
+    "prettier-eslint": "^9.0.1"
   }
 }
