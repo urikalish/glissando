@@ -14,12 +14,12 @@ class GlissandoClient {
 		this.socket = socket;
 		this.socketId = socket.id;
 		this.isConnected = true;
-		logger.log(`client ${this.id} connected to socket ${this.socketId}`);
+		logger.log(`client ${this.id} connected via socket ${this.socketId}`);
 	}
 
 	onDisconnect() {
 		this.isConnected = false;
-		logger.log(`client ${this.id} disconnected from socket ${this.socketId}`);
+		logger.log(`client ${this.id} disconnected via socket ${this.socketId}`);
 	}
 
 	onMsgAddOne(data) {
