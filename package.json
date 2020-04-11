@@ -11,6 +11,12 @@
     "lint": "eslint --fix --config .eslintrc.json \"server/**/*.js\"",
     "test": "echo \"No test specified\" && exit 1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn format",
+      "pre-push": ""
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pixel-glissando/pixel-glissando.git"
@@ -23,15 +29,19 @@
   "homepage": "https://github.com/pixel-glissando/pixel-glissando#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "husky": "^4.2.5",
     "lodash": "^4.17.15",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-formidable": "^4.0.0",
     "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "lint-staged": "^10.1.3",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
     "prettier-eslint": "^9.0.1"
