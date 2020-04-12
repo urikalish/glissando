@@ -5,6 +5,7 @@ export function Run() {
 	return (
 		<>
 			<div>Run</div>
+			<hr />
 			<ul>
 				<li>
 					<Link to="/">Home</Link>

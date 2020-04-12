@@ -5,6 +5,7 @@ export function Create() {
 	return (
 		<>
 			<div>Create</div>
+			<hr />
 			<ul>
 				<li>
 					<Link to="/">Home</Link>

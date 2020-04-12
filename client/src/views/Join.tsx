@@ -5,6 +5,7 @@ export function Join() {
 	return (
 		<>
 			<div>Join</div>
+			<hr />
 			<ul>
 				<li>
 					<Link to="/">Home</Link>

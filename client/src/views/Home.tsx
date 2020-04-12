@@ -20,10 +20,8 @@ export function Home() {
 		<>
 			<div>Home</div>
 			<div>{counter}</div>
-			<PlusOne />
-			<Button onClick={goInc} variant="contained" color="primary">
-				Inc
-			</Button>
+			<Button onClick={goInc} variant="contained" color="primary"><PlusOne /></Button>
+			<hr />
 			<ul>
 				<li>
 					<Link to="/create">Create</Link>
