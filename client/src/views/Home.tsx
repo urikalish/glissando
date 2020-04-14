@@ -8,13 +8,15 @@ import ListItem from '@material-ui/core/ListItem/ListItem';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
-	root: {},
+	root: {
+		backgroundColor: theme.palette.background.default,
+	},
 	list: {},
 	link: {
 		textDecoration: 'none',
-		color: '#ccc',
+		color: theme.palette.text.secondary,
 		'&:hover': {
-			color: '#fff',
+			color: theme.palette.text.primary,
 		},
 	},
 }));
