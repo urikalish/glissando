@@ -48,13 +48,13 @@ export function Home() {
 					</Link>
 				</ListItem>
 				<ListItem>
-					<Link to="/join" className={classes.link}>
-						Join
+					<Link to="/run" className={classes.link}>
+						Run
 					</Link>
 				</ListItem>
 				<ListItem>
-					<Link to="/run" className={classes.link}>
-						Run
+					<Link to="/join" className={classes.link}>
+						Join
 					</Link>
 				</ListItem>
 			</List>
