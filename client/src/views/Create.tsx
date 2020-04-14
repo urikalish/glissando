@@ -1,22 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import ListItem from '@material-ui/core/ListItem/ListItem';
+import List from '@material-ui/core/List/List';
 
 export function Create() {
 	return (
 		<>
 			<div>Create</div>
 			<hr />
-			<ul>
-				<li>
+			<List>
+				<ListItem>
 					<Link to="/">Home</Link>
-				</li>
-				<li>
-					<Link to="/join">Join</Link>
-				</li>
-				<li>
-					<Link to="/run">Run</Link>
-				</li>
-			</ul>
+				</ListItem>
+			</List>
 		</>
 	);
 }
