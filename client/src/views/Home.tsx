@@ -2,12 +2,10 @@ import React, {memo, useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import PlusOne from '@material-ui/icons/PlusOne';
 import {useBackend} from '../hooks/useBackend';
-import {Link} from 'react-router-dom';
-import List from '@material-ui/core/List/List';
-import ListItem from '@material-ui/core/ListItem/ListItem';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography/Typography';
 import Paper from '@material-ui/core/Paper/Paper';
+import {MyLinks} from '../components/MyLinks';
 
 interface HomeProps {}
 
@@ -26,23 +24,8 @@ export const Home = memo(({}: HomeProps) => {
 		button2Style: {
 			backgroundColor: 'green',
 		},
-		listStyle: {},
-		linkStyle: {
-			textDecoration: 'none',
-			color: theme.palette.text.secondary,
-			'&:hover': {
-				color: theme.palette.text.primary,
-			},
-		},
 	}));
-	const {
-		rootStyle,
-		wrapperStyle,
-		button1Style,
-		button2Style,
-		listStyle,
-		linkStyle,
-	} = useStyles();
+	const {rootStyle, wrapperStyle, button1Style, button2Style} = useStyles();
 
 	const [counter, setCounter] = useState<number>(0);
 	const {backendCounter, incBackendCounter} = useBackend();
@@ -71,23 +54,7 @@ export const Home = memo(({}: HomeProps) => {
 				>
 					<PlusOne />
 				</Button>
-				<List className={listStyle}>
-					<ListItem>
-						<Link to="/create" className={linkStyle}>
-							Create
-						</Link>
-					</ListItem>
-					<ListItem>
-						<Link to="/run" className={linkStyle}>
-							Run
-						</Link>
-					</ListItem>
-					<ListItem>
-						<Link to="/join" className={linkStyle}>
-							Join
-						</Link>
-					</ListItem>
-				</List>
+				<MyLinks create run join />
 			</Paper>
 		</div>
 	);
