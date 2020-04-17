@@ -14,7 +14,11 @@ interface HomeProps {}
 export const Home = memo(({}: HomeProps) => {
 	const useStyles = makeStyles(theme => ({
 		rootStyle: {
+			height: '100%',
 			backgroundColor: theme.palette.background.default,
+		},
+		wrapperStyle: {
+			height: '100%',
 		},
 		button1Style: {
 			backgroundColor: 'red',
@@ -33,6 +37,7 @@ export const Home = memo(({}: HomeProps) => {
 	}));
 	const {
 		rootStyle,
+		wrapperStyle,
 		button1Style,
 		button2Style,
 		listStyle,
@@ -52,7 +57,7 @@ export const Home = memo(({}: HomeProps) => {
 
 	return (
 		<div className={rootStyle}>
-			<Paper elevation={0}>
+			<Paper elevation={0} className={wrapperStyle}>
 				<div>
 					<Typography variant="h4">Home</Typography>
 				</div>

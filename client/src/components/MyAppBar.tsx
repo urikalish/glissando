@@ -15,6 +15,7 @@ export const MyAppBar = memo(({}: MyAppBarProps) => {
 			lineHeight: '2rem',
 			backgroundColor: '#c05',
 			color: '#fff',
+			userSelect: 'none',
 		},
 	}));
 	const {rootStyle} = useStyles();
