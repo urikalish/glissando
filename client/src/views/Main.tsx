@@ -7,8 +7,7 @@ import {Create} from './Create';
 import {Run} from './Run';
 import {Join} from './Join';
 
-interface MainProps {
-}
+interface MainProps {}
 
 export const Main = memo(({}: MainProps) => {
 	const useStyles = makeStyles(theme => ({

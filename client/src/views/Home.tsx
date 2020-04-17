@@ -9,8 +9,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography/Typography';
 import Paper from '@material-ui/core/Paper/Paper';
 
-interface HomeProps {
-}
+interface HomeProps {}
 
 export const Home = memo(({}: HomeProps) => {
 	const useStyles = makeStyles(theme => ({

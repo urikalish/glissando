@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import List from '@material-ui/core/List/List';
 
-interface JoinProps {
-}
+interface JoinProps {}
 
 export const Join = memo(({}: JoinProps) => {
 	return (
