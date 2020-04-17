@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import PlusOne from '@material-ui/icons/PlusOne';
 import {useBackend} from '../hooks/useBackend';
@@ -8,9 +8,11 @@ import ListItem from '@material-ui/core/ListItem/ListItem';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography/Typography';
 import Paper from '@material-ui/core/Paper/Paper';
-//import styled from '@material-ui/core/styles/styled';
 
-export function Home() {
+interface HomeProps {
+}
+
+export const Home = memo(({}: HomeProps) => {
 	const useStyles = makeStyles(theme => ({
 		rootStyle: {
 			backgroundColor: theme.palette.background.default,
@@ -40,16 +42,6 @@ export function Home() {
 
 	const [counter, setCounter] = useState<number>(0);
 	const {backendCounter, incBackendCounter} = useBackend();
-
-	// const MyButton = styled(Button)({
-	// 	background: counter % 2 === 0 ? 'red' : 'blue',
-	// 	border: 0,
-	// 	borderRadius: 3,
-	// 	boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-	// 	color: 'white',
-	// 	height: 48,
-	// 	padding: '0 30px',
-	// });
 
 	const goInc = async () => {
 		incBackendCounter(counter);
@@ -95,4 +87,4 @@ export function Home() {
 			</Paper>
 		</div>
 	);
-}
+});

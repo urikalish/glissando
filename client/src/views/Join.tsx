@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Link} from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import List from '@material-ui/core/List/List';
 
-export function Join() {
+interface JoinProps {
+}
+
+export const Join = memo(({}: JoinProps) => {
 	return (
 		<>
 			<div>Join</div>
@@ -15,4 +18,4 @@ export function Join() {
 			</List>
 		</>
 	);
-}
+});

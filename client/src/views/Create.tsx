@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Link} from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import List from '@material-ui/core/List/List';
 
-export function Create() {
+interface CreateProps {
+}
+
+export const Create = memo(({}: CreateProps) => {
 	return (
 		<>
 			<div>Create</div>
@@ -15,4 +18,4 @@ export function Create() {
 			</List>
 		</>
 	);
-}
+});

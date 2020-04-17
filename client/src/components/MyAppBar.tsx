@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 
-export function MyAppBar() {
+interface MyAppBarProps {}
+
+export const MyAppBar = memo(({}: MyAppBarProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
 		rootStyle: {
 			display: 'flex',
 			alignItems: 'center',
-			height: '5rem',
+			height: '4rem',
 			padding: '1rem',
-			lineHeight: '3rem',
-			fontSize: '3rem',
-			backgroundColor: '#d05',
-			backgroundImage: 'linear-gradient(to right, #d03, #d07)',
+			fontSize: '2rem',
+			lineHeight: '2rem',
+			backgroundColor: '#c05',
 			color: '#fff',
 		},
 	}));
@@ -23,4 +24,4 @@ export function MyAppBar() {
 			Pixel Glissando
 		</AppBar>
 	);
-}
+});

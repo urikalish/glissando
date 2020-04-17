@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import {MyAppBar} from '../components/MyAppBar';
@@ -7,7 +7,10 @@ import {Create} from './Create';
 import {Run} from './Run';
 import {Join} from './Join';
 
-export function Main() {
+interface MainProps {
+}
+
+export const Main = memo(({}: MainProps) => {
 	const useStyles = makeStyles(theme => ({
 		rootStyle: {
 			height: '100%',
@@ -30,4 +33,4 @@ export function Main() {
 			</div>
 		</Router>
 	);
-}
+});

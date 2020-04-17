@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Link} from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import List from '@material-ui/core/List/List';
 
-export function Run() {
+interface RunProps {
+}
+
+export const Run = memo(({}: RunProps) => {
 	return (
 		<>
 			<div>Run</div>
@@ -15,4 +18,4 @@ export function Run() {
 			</List>
 		</>
 	);
-}
+});
