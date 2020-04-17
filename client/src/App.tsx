@@ -1,16 +1,11 @@
 import React from 'react';
-import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/core/styles';
 import {Main} from './views/Main';
+import {getColorTheme} from './services/color-service';
 
 function App() {
-	const theme = createMuiTheme({
-		palette: {
-			type: 'light',
-		},
-	});
-
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={getColorTheme()}>
 			<Main />
 		</ThemeProvider>
 	);
