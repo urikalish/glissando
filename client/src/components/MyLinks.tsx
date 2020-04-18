@@ -3,16 +3,21 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import List from '@material-ui/core/List/List';
 import {Link} from 'react-router-dom';
+import Container from '@material-ui/core/Container/Container';
+import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 
 interface MyLinksProps {
-	create?: boolean;
-	run?: boolean;
-	join?: boolean;
+	links: Array<{text: string; to: string}>;
+	horizontal?: boolean;
 }
 
-export const MyLinks = memo(({create, run, join}: MyLinksProps) => {
+export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 	const useStyles = makeStyles(theme => ({
 		listStyle: {},
+		listStyleHorizontal: {
+			display: 'flex',
+			justifyContent: 'flex-start',
+		},
 		linkStyle: {
 			textDecoration: 'none',
 			color: theme.palette.text.secondary,
@@ -21,31 +26,19 @@ export const MyLinks = memo(({create, run, join}: MyLinksProps) => {
 			},
 		},
 	}));
-	const {listStyle, linkStyle} = useStyles();
+	const {listStyle, listStyleHorizontal, linkStyle} = useStyles();
 
 	return (
-		<List className={listStyle}>
-			{create && (
-				<ListItem>
-					<Link to="/create" className={linkStyle}>
-						Create
-					</Link>
-				</ListItem>
-			)}
-			{run && (
-				<ListItem>
-					<Link to="/run" className={linkStyle}>
-						Run
-					</Link>
-				</ListItem>
-			)}
-			{join && (
-				<ListItem>
-					<Link to="/join" className={linkStyle}>
-						Join
-					</Link>
-				</ListItem>
-			)}
-		</List>
+		<Container>
+			<List className={listStyle + (horizontal ? ' ' + listStyleHorizontal : '')}>
+				{links.map(link => (
+					<ListItem>
+						<Link to={link.to} className={linkStyle}>
+							<ListItemText primary={link.text} />
+						</Link>
+					</ListItem>
+				))}
+			</List>
+		</Container>
 	);
 });
