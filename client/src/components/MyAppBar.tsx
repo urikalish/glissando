@@ -3,6 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box/Box';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import pink from '@material-ui/core/colors/pink';
+import purple from "@material-ui/core/colors/purple";
 
 interface MyAppBarProps {}
 
@@ -16,7 +17,7 @@ export const MyAppBar = memo(({}: MyAppBarProps) => {
 			height: myAppVarHeight,
 			padding: '1rem',
 			lineHeight: '2rem',
-			backgroundColor: pink[500],
+			backgroundImage: `linear-gradient(to right, ${pink[500]}, ${purple[500]})`,
 			color: '#fff',
 		},
 		title: {
