@@ -1,7 +1,7 @@
 import socketIOClient from 'socket.io-client';
 import {useEffect, useState} from 'react';
 
-export const useBackend = () => {
+export const useMyBackend = () => {
 	const [connection, setConnection] = useState<SocketIOClient.Socket>();
 	const [backendCounter, setBackendCounter] = useState<number>(0);
 
