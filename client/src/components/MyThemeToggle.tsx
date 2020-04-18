@@ -14,7 +14,7 @@ export const MyThemeToggle = memo(({themeOptions, onThemeChange}: MyThemeToggleP
 		switch: {
 			position: 'absolute',
 			top: `calc(${vars.appBarHeightRems / 2}rem - 19px)`,
-			right: '1rem',
+			right: 8,
 		},
 	}));
 	const classes = useStyles();
