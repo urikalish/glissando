@@ -1,11 +1,12 @@
 import {useMemo, useState} from 'react';
 import {createMuiTheme} from '@material-ui/core';
 
-export interface useMyThemeProps {}
+export interface useMyThemeProps {
+	isLightTheme: boolean;
+}
 
-export const useMyTheme = ({}: useMyThemeProps) => {
-
-	const [isLight/*, setIsLight*/] = useState(false);
+export const useMyTheme = ({isLightTheme}: useMyThemeProps) => {
+	const [isLight, setIsLight] = useState(isLightTheme);
 
 	const theme = useMemo(() => {
 		return createMuiTheme({
@@ -30,5 +31,9 @@ export const useMyTheme = ({}: useMyThemeProps) => {
 		});
 	}, [isLight]);
 
-	return {theme};
+	const toggleTheme = () => {
+		setIsLight(!isLight);
+	};
+
+	return {theme, toggleTheme};
 };
