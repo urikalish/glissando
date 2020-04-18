@@ -1,15 +1,16 @@
-import {useMemo} from 'react';
+import {useMemo, useState} from 'react';
 import {createMuiTheme} from '@material-ui/core';
 
-export interface useMyThemeProps {
-	isLightTheme: boolean;
-}
+export interface useMyThemeProps {}
 
-export const useMyTheme = ({isLightTheme}: useMyThemeProps) => {
+export const useMyTheme = ({}: useMyThemeProps) => {
+
+	const [isLight/*, setIsLight*/] = useState(false);
+
 	const theme = useMemo(() => {
 		return createMuiTheme({
 			palette: {
-				type: isLightTheme ? 'light' : 'dark',
+				type: isLight ? 'light' : 'dark',
 			},
 			typography: {
 				fontFamily: [
@@ -27,7 +28,7 @@ export const useMyTheme = ({isLightTheme}: useMyThemeProps) => {
 				].join(','),
 			},
 		});
-	}, [isLightTheme]);
+	}, [isLight]);
 
 	return {theme};
 };
