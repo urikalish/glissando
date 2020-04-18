@@ -28,7 +28,7 @@ export const Main = memo(({}: MainProps) => {
 
 	return (
 		<Router>
-			<Container maxWidth="xl" className={classes.main}>
+			<Container maxWidth="lg" className={classes.main}>
 				<MyAppBar />
 				<Box className={classes.content}>
 					<Switch>
