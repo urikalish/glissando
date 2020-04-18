@@ -41,7 +41,7 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 
 	return (
 		<Router>
-			<Container maxWidth="lg" className={classes.main}>
+			<Container maxWidth="xl" className={classes.main}>
 				<MyAppBar />
 				<MyThemeToggle themeOptions={themeOptions} onThemeChange={onChangeTheme} />
 				<Box className={classes.content}>

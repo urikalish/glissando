@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {ThemeProvider} from '@material-ui/core/styles';
+import {MyThemeOptions, defaultThemeOptions, createMyTheme} from './services/theme-helper';
 import {Main} from './views/Main';
-import {createMyTheme, MyThemeOptions} from './services/theme-helper';
 
 function App() {
-	const [themeOptions, setThemeOptions] = useState({isDarkMode: false});
+	const [themeOptions, setThemeOptions] = useState(defaultThemeOptions);
 	const [theme, setTheme] = useState(createMyTheme(themeOptions));
 
 	const onChangeTheme = (themeOptions: MyThemeOptions) => {

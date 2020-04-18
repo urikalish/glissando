@@ -4,6 +4,10 @@ export interface MyThemeOptions {
 	isDarkMode: boolean;
 }
 
+export const defaultThemeOptions: MyThemeOptions = {
+	isDarkMode: false,
+};
+
 export const createMyTheme = (myThemeOptions: MyThemeOptions) => {
 	return createMuiTheme({
 		palette: {
