@@ -3,7 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box/Box';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import pink from '@material-ui/core/colors/pink';
-import purple from "@material-ui/core/colors/purple";
+import purple from '@material-ui/core/colors/purple';
 
 interface MyAppBarProps {}
 
