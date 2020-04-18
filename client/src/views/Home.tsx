@@ -11,14 +11,14 @@ import {MyLinks} from '../components/MyLinks';
 interface HomeProps {}
 
 export const Home = memo(({}: HomeProps) => {
-	const useStyles = makeStyles((theme) => ({
+	const useStyles = makeStyles(theme => ({
 		home: {
 			height: '100%',
 		},
 		content: {
 			marginTop: '1rem',
 		},
-		title : {
+		title: {
 			color: theme.palette.text.primary,
 		},
 		counter: {
@@ -62,7 +62,9 @@ export const Home = memo(({}: HomeProps) => {
 	return (
 		<Box className={classes.home}>
 			<Box>
-				<Typography variant="h4" className={classes.title}>Home</Typography>
+				<Typography variant="h4" className={classes.title}>
+					Home
+				</Typography>
 			</Box>
 			<Divider light />
 			<Box className={classes.content}>

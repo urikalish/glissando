@@ -43,8 +43,8 @@ export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 	return (
 		<Box maxWidth="sm" className={classes.myLinks}>
 			<List className={classes.list + (horizontal ? ' ' + classes.listHorizontal : '')}>
-				{links.map(link => (
-					<ListItem className={classes.listItem}>
+				{links.map((link, index) => (
+					<ListItem key={index} className={classes.listItem}>
 						<Link to={link.to} className={classes.link}>
 							<ListItemText primary={link.text} />
 						</Link>

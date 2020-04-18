@@ -1,9 +1,9 @@
 import {createMuiTheme} from '@material-ui/core';
 
-export const getMyTheme = () => {
+export const getMyTheme = (isLightTheme: boolean) => {
 	return createMuiTheme({
 		palette: {
-			type: 'light',
+			type: isLightTheme ? 'light' : 'dark',
 		},
 		typography: {
 			fontFamily: [
