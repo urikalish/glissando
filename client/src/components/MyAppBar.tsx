@@ -4,17 +4,16 @@ import Box from '@material-ui/core/Box/Box';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import pink from '@material-ui/core/colors/pink';
 import purple from '@material-ui/core/colors/purple';
+import {vars} from '../services/vars';
 
 interface MyAppBarProps {}
-
-export const myAppVarHeight = '4rem';
 
 export const MyAppBar = memo(({}: MyAppBarProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
 		myAppBar: {
 			display: 'flex',
 			alignItems: 'center',
-			height: myAppVarHeight,
+			height: `${vars.appBarHeightRems}rem`,
 			padding: '1rem',
 			lineHeight: '2rem',
 			backgroundImage: `linear-gradient(to right, ${pink[500]}, ${purple[500]})`,
