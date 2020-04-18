@@ -1,14 +1,16 @@
 import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Button from '@material-ui/core/Button/Button';
+import Switch from '@material-ui/core/Switch/Switch';
+import {MyThemeOptions} from '../services/theme-helper';
 
 interface MyThemeToggleProps {
-	onToggleChange: () => void;
+	themeOptions: MyThemeOptions;
+	onThemeChange: (themeOptions: MyThemeOptions) => void;
 }
 
-export const MyThemeToggle = memo(({onToggleChange}: MyThemeToggleProps) => {
+export const MyThemeToggle = memo(({themeOptions, onThemeChange}: MyThemeToggleProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
-		button: {
+		switch: {
 			position: 'absolute',
 			top: '1rem',
 			right: '1rem',
@@ -16,15 +18,19 @@ export const MyThemeToggle = memo(({onToggleChange}: MyThemeToggleProps) => {
 	}));
 	const classes = useStyles();
 
-	const onClickToggle = () => {
-		if (onToggleChange) {
-			onToggleChange();
+	const onChangeTheme = () => {
+		if (onThemeChange) {
+			onThemeChange({isDarkMode: !themeOptions.isDarkMode});
 		}
 	};
 
 	return (
-		<Button onClick={onClickToggle} variant="contained" className={classes.button}>
-			Toggle Theme
-		</Button>
+		<Switch
+			checked={themeOptions.isDarkMode}
+			onChange={onChangeTheme}
+			name="themeSwitch"
+			color="default"
+			className={classes.switch}
+		/>
 	);
 });

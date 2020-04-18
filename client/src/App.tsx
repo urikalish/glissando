@@ -1,26 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {ThemeProvider} from '@material-ui/core/styles';
-import {useMyTheme} from './hooks/useMyTheme';
 import {Main} from './views/Main';
-import {MyThemeToggle} from './components/MyThemeToggle';
+import {createMyTheme, MyThemeOptions} from './services/theme-helper';
 
 function App() {
-	const {theme, toggleTheme} = useMyTheme({isLightTheme: true});
+	const [themeOptions, setThemeOptions] = useState({isDarkMode: false});
+	const [theme, setTheme] = useState(createMyTheme(themeOptions));
 
-	useEffect(() => {
-		setTimeout(() => {
-			toggleTheme();
-		}, 3000);
-	}, []);
-
-	const onToggleChange = () => {
-		toggleTheme();
+	const onChangeTheme = (themeOptions: MyThemeOptions) => {
+		setThemeOptions(themeOptions);
+		setTheme(createMyTheme(themeOptions));
 	};
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Main />
-			<MyThemeToggle onToggleChange={onToggleChange} />
+			<Main themeOptions={themeOptions} onThemeChange={onChangeTheme} />
 		</ThemeProvider>
 	);
 }
