@@ -18,7 +18,18 @@ export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 		listHorizontal: {
 			display: 'flex',
 			justifyContent: 'flex-start',
+			'& $listItem': {
+				flex: '0 0 auto',
+				width: 'auto',
+				height: '1.5rem',
+				borderLeft: `1px solid ${theme.palette.divider}`,
+				'&:nth-of-type(1)': {
+					paddingLeft: 0,
+					borderLeft: 'none',
+				},
+			},
 		},
+		listItem: {},
 		link: {
 			textDecoration: 'none',
 			color: theme.palette.text.secondary,
@@ -33,7 +44,7 @@ export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 		<Box maxWidth="sm" className={classes.myLinks}>
 			<List className={classes.list + (horizontal ? ' ' + classes.listHorizontal : '')}>
 				{links.map(link => (
-					<ListItem>
+					<ListItem className={classes.listItem}>
 						<Link to={link.to} className={classes.link}>
 							<ListItemText primary={link.text} />
 						</Link>

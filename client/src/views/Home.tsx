@@ -1,11 +1,12 @@
 import React, {memo, useEffect, useMemo, useState} from 'react';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Typography from '@material-ui/core/Typography/Typography';
+import Box from '@material-ui/core/Box/Box';
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import PlusOne from '@material-ui/icons/PlusOne';
 import {useBackend} from '../hooks/useBackend';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import Typography from '@material-ui/core/Typography/Typography';
 import {MyLinks} from '../components/MyLinks';
-import Box from '@material-ui/core/Box/Box';
 
 interface HomeProps {}
 
@@ -13,7 +14,15 @@ export const Home = memo(({}: HomeProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
 		home: {
 			height: '100%',
-			padding: '16px 24px',
+		},
+		content: {
+			marginTop: '1rem',
+		},
+		counter: {
+			marginTop: 16,
+		},
+		incButton: {
+			marginTop: 8,
 		},
 	}));
 	const classes = useStyles();
@@ -48,15 +57,17 @@ export const Home = memo(({}: HomeProps) => {
 
 	return (
 		<Box className={classes.home}>
-			<div>
+			<Box>
 				<Typography variant="h4">Home</Typography>
-			</div>
-			<hr />
-			<div>{counter}</div>
-			<Button onClick={goInc} variant="contained">
-				<PlusOne />
-			</Button>
-			<MyLinks links={links} horizontal />
+			</Box>
+			<Divider light />
+			<Box className={classes.content}>
+				<MyLinks links={links} horizontal />
+				<Box className={classes.counter}>{counter}</Box>
+				<Button onClick={goInc} variant="contained" className={classes.incButton}>
+					<PlusOne />
+				</Button>
+			</Box>
 		</Box>
 	);
 });

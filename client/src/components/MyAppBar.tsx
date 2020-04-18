@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import AppBar from '@material-ui/core/AppBar/AppBar';
 import Box from '@material-ui/core/Box/Box';
+import AppBar from '@material-ui/core/AppBar/AppBar';
 
 interface MyAppBarProps {}
 
