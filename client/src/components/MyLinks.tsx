@@ -1,10 +1,10 @@
 import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import ListItem from '@material-ui/core/ListItem/ListItem';
+import Box from '@material-ui/core/Box/Box';
 import List from '@material-ui/core/List/List';
-import {Link} from 'react-router-dom';
-import Container from '@material-ui/core/Container/Container';
+import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
+import {Link} from 'react-router-dom';
 
 interface MyLinksProps {
 	links: Array<{text: string; to: string}>;
@@ -13,12 +13,13 @@ interface MyLinksProps {
 
 export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 	const useStyles = makeStyles(theme => ({
-		listStyle: {},
-		listStyleHorizontal: {
+		myLinks: {},
+		list: {},
+		listHorizontal: {
 			display: 'flex',
 			justifyContent: 'flex-start',
 		},
-		linkStyle: {
+		link: {
 			textDecoration: 'none',
 			color: theme.palette.text.secondary,
 			'&:hover': {
@@ -26,19 +27,19 @@ export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 			},
 		},
 	}));
-	const {listStyle, listStyleHorizontal, linkStyle} = useStyles();
+	const classes = useStyles();
 
 	return (
-		<Container>
-			<List className={listStyle + (horizontal ? ' ' + listStyleHorizontal : '')}>
+		<Box maxWidth="sm" className={classes.myLinks}>
+			<List className={classes.list + (horizontal ? ' ' + classes.listHorizontal : '')}>
 				{links.map(link => (
 					<ListItem>
-						<Link to={link.to} className={linkStyle}>
+						<Link to={link.to} className={classes.link}>
 							<ListItemText primary={link.text} />
 						</Link>
 					</ListItem>
 				))}
 			</List>
-		</Container>
+		</Box>
 	);
 });

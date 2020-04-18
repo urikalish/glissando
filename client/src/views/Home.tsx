@@ -5,25 +5,18 @@ import {useBackend} from '../hooks/useBackend';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography/Typography';
 import {MyLinks} from '../components/MyLinks';
-import Container from '@material-ui/core/Container/Container';
+import Box from '@material-ui/core/Box/Box';
 
 interface HomeProps {}
 
 export const Home = memo(({}: HomeProps) => {
-	const useStyles = makeStyles(theme => ({
-		containerStyle: {
+	const useStyles = makeStyles((/*theme*/) => ({
+		home: {
 			height: '100%',
-			width: '100%',
-			backgroundColor: theme.palette.background.default,
-		},
-		button1Style: {
-			backgroundColor: 'red',
-		},
-		button2Style: {
-			backgroundColor: 'green',
+			padding: '16px 24px',
 		},
 	}));
-	const {containerStyle, button1Style, button2Style} = useStyles();
+	const classes = useStyles();
 
 	const [counter, setCounter] = useState<number>(0);
 	const {backendCounter, incBackendCounter} = useBackend();
@@ -54,21 +47,16 @@ export const Home = memo(({}: HomeProps) => {
 	}, []);
 
 	return (
-		<Container className={containerStyle}>
+		<Box className={classes.home}>
 			<div>
 				<Typography variant="h4">Home</Typography>
 			</div>
 			<hr />
 			<div>{counter}</div>
-			<Button
-				onClick={goInc}
-				variant="contained"
-				color="primary"
-				className={counter % 2 === 0 ? button1Style : button2Style}
-			>
+			<Button onClick={goInc} variant="contained">
 				<PlusOne />
 			</Button>
 			<MyLinks links={links} horizontal />
-		</Container>
+		</Box>
 	);
 });

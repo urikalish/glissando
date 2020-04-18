@@ -1,28 +1,33 @@
 import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import AppBar from '@material-ui/core/AppBar/AppBar';
+import Box from '@material-ui/core/Box/Box';
 
 interface MyAppBarProps {}
 
+export const myAppVarHeight = '4rem';
+
 export const MyAppBar = memo(({}: MyAppBarProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
-		rootStyle: {
+		myAppBar: {
 			display: 'flex',
 			alignItems: 'center',
-			height: '4rem',
+			height: myAppVarHeight,
 			padding: '1rem',
-			fontSize: '2rem',
 			lineHeight: '2rem',
 			backgroundColor: '#c05',
 			color: '#fff',
+		},
+		title: {
+			fontSize: '2rem',
 			userSelect: 'none',
 		},
 	}));
-	const {rootStyle} = useStyles();
+	const classes = useStyles();
 
 	return (
-		<AppBar position="static" className={rootStyle}>
-			Pixel Glissando
+		<AppBar position="static" className={classes.myAppBar}>
+			<Box className={classes.title}>Pixel Glissando</Box>
 		</AppBar>
 	);
 });
