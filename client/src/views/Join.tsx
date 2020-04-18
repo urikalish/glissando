@@ -8,12 +8,15 @@ import {MyLinks} from '../components/MyLinks';
 interface JoinProps {}
 
 export const Join = memo(({}: JoinProps) => {
-	const useStyles = makeStyles((/*theme*/) => ({
+	const useStyles = makeStyles(theme => ({
 		join: {
 			height: '100%',
 		},
 		content: {
 			marginTop: '1rem',
+		},
+		title: {
+			color: theme.palette.text.primary,
 		},
 	}));
 	const classes = useStyles();
@@ -30,7 +33,9 @@ export const Join = memo(({}: JoinProps) => {
 	return (
 		<Box className={classes.join}>
 			<Box>
-				<Typography variant="h4">Join</Typography>
+				<Typography variant="h4" className={classes.title}>
+					Join
+				</Typography>
 			</Box>
 			<Divider light />
 			<Box className={classes.content}>

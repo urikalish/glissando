@@ -8,12 +8,15 @@ import {MyLinks} from '../components/MyLinks';
 interface RunProps {}
 
 export const Run = memo(({}: RunProps) => {
-	const useStyles = makeStyles((/*theme*/) => ({
+	const useStyles = makeStyles(theme => ({
 		run: {
 			height: '100%',
 		},
 		content: {
 			marginTop: '1rem',
+		},
+		title: {
+			color: theme.palette.text.primary,
 		},
 	}));
 	const classes = useStyles();
@@ -30,7 +33,9 @@ export const Run = memo(({}: RunProps) => {
 	return (
 		<Box className={classes.run}>
 			<Box>
-				<Typography variant="h4">Run</Typography>
+				<Typography variant="h4" className={classes.title}>
+					Run
+				</Typography>
 			</Box>
 			<Divider light />
 			<Box className={classes.content}>

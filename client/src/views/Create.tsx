@@ -8,12 +8,15 @@ import {MyLinks} from '../components/MyLinks';
 interface CreateProps {}
 
 export const Create = memo(({}: CreateProps) => {
-	const useStyles = makeStyles((/*theme*/) => ({
+	const useStyles = makeStyles(theme => ({
 		create: {
 			height: '100%',
 		},
 		content: {
 			marginTop: '1rem',
+		},
+		title: {
+			color: theme.palette.text.primary,
 		},
 	}));
 	const classes = useStyles();
@@ -34,7 +37,9 @@ export const Create = memo(({}: CreateProps) => {
 	return (
 		<Box className={classes.create}>
 			<Box>
-				<Typography variant="h4">Create</Typography>
+				<Typography variant="h4" className={classes.title}>
+					Create
+				</Typography>
 			</Box>
 			<Divider light />
 			<Box className={classes.content}>

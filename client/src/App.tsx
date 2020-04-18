@@ -1,15 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ThemeProvider} from '@material-ui/core/styles';
+import {useMyTheme} from './hooks/useMyTheme';
 import {Main} from './views/Main';
-import {getMyTheme} from './services/my-theme';
 
 function App() {
-	const [isLightTheme /*, setIsLightTheme*/] = useState(true);
-	const [theme, setTheme] = useState(getMyTheme(isLightTheme));
-
-	useEffect(() => {
-		setTheme(getMyTheme(isLightTheme));
-	}, [isLightTheme]);
+	const {theme} = useMyTheme({isLightTheme: false});
 
 	return (
 		<ThemeProvider theme={theme}>
