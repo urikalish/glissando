@@ -6,16 +6,16 @@ import Box from '@material-ui/core/Box/Box';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import pink from '@material-ui/core/colors/pink';
 import purple from '@material-ui/core/colors/purple';
-import {vars} from '../services/vars';
+import {myVars} from '../services/my-vars';
 
-interface MyAppBarProps {}
+interface MastheadProps {}
 
-export const MyAppBar = memo(({}: MyAppBarProps) => {
+export const Masthead = memo(({}: MastheadProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
-		myAppBar: {
+		masthead: {
 			display: 'flex',
 			alignItems: 'center',
-			height: `${vars.appBarHeightRems}rem`,
+			height: `${myVars.appBarHeightRems}rem`,
 			padding: '0.5rem',
 			lineHeight: '2rem',
 			backgroundImage: `linear-gradient(to right, ${pink[500]}, ${purple[500]})`,
@@ -25,7 +25,7 @@ export const MyAppBar = memo(({}: MyAppBarProps) => {
 			fontSize: '2rem',
 			userSelect: 'none',
 		},
-		myAppBarSmall: {
+		mastheadSmall: {
 			'& $title': {
 				fontSize: '1.5rem',
 			},
@@ -34,10 +34,10 @@ export const MyAppBar = memo(({}: MyAppBarProps) => {
 	const classes = useStyles();
 
 	const theme = useTheme();
-	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
 	return (
-		<AppBar position="static" className={classes.myAppBar + (isSmallScreen ? ' ' + classes.myAppBarSmall : '')}>
+		<AppBar position="static" className={classes.masthead + (isSmallScreen ? ' ' + classes.mastheadSmall : '')}>
 			<Box className={classes.title}>Pixel Glissando</Box>
 		</AppBar>
 	);

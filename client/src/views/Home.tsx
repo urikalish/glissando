@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import PlusOne from '@material-ui/icons/PlusOne';
 import {useMyBackend} from '../hooks/useMyBackend';
-import {MyLinks} from '../components/MyLinks';
+import {NavLinks} from '../components/NavLinks';
 
 interface HomeProps {}
 
@@ -68,7 +68,7 @@ export const Home = memo(({}: HomeProps) => {
 			</Box>
 			<Divider light />
 			<Box className={classes.content}>
-				<MyLinks links={links} horizontal />
+				<NavLinks links={links} horizontal />
 				<Box className={classes.counter}>{counter}</Box>
 				<Button onClick={goInc} variant="contained" className={classes.incButton}>
 					<PlusOne />

@@ -3,14 +3,14 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Container from '@material-ui/core/Container/Container';
 import Box from '@material-ui/core/Box/Box';
-import {MyAppBar} from '../components/MyAppBar';
-import {MyThemeToggle} from '../components/MyThemeToggle';
+import {myVars} from '../services/my-vars';
+import {MyThemeOptions} from '../services/theme-helper';
+import {Masthead} from '../components/Masthead';
+import {ThemeToggle} from '../components/ThemeToggle';
 import {Home} from './Home';
 import {Create} from './Create';
 import {Run} from './Run';
 import {Join} from './Join';
-import {MyThemeOptions} from '../services/theme-helper';
-import {vars} from '../services/vars';
 
 interface MainProps {
 	themeOptions: MyThemeOptions;
@@ -25,7 +25,7 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 			padding: 0,
 		},
 		content: {
-			height: `calc(100% - ${vars.appBarHeightRems}rem)`,
+			height: `calc(100% - ${myVars.appBarHeightRems}rem)`,
 			overflow: 'auto',
 			backgroundColor: theme.palette.background.default,
 			padding: '1rem 1.5rem',
@@ -42,8 +42,8 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 	return (
 		<Router>
 			<Container maxWidth="xl" className={classes.main}>
-				<MyAppBar />
-				<MyThemeToggle themeOptions={themeOptions} onThemeChange={handleThemeChange} />
+				<Masthead />
+				<ThemeToggle themeOptions={themeOptions} onThemeChange={handleThemeChange} />
 				<Box className={classes.content}>
 					<Switch>
 						<Route path="/create" exact component={Create} />

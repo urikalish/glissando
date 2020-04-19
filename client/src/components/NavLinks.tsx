@@ -6,14 +6,14 @@ import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 import {Link} from 'react-router-dom';
 
-interface MyLinksProps {
+interface NavLinksProps {
 	links: Array<{text: string; to: string}>;
 	horizontal?: boolean;
 }
 
-export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
+export const NavLinks = memo(({links, horizontal}: NavLinksProps) => {
 	const useStyles = makeStyles(theme => ({
-		myLinks: {},
+		navLinks: {},
 		list: {},
 		listHorizontal: {
 			display: 'flex',
@@ -41,7 +41,7 @@ export const MyLinks = memo(({links, horizontal}: MyLinksProps) => {
 	const classes = useStyles();
 
 	return (
-		<Box maxWidth="sm" className={classes.myLinks}>
+		<Box maxWidth="sm" className={classes.navLinks}>
 			<List className={classes.list + (horizontal ? ' ' + classes.listHorizontal : '')}>
 				{links.map((link, index) => (
 					<ListItem key={index} className={classes.listItem}>

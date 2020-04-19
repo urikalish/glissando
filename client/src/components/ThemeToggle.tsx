@@ -2,18 +2,18 @@ import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Switch from '@material-ui/core/Switch/Switch';
 import {MyThemeOptions} from '../services/theme-helper';
-import {vars} from '../services/vars';
+import {myVars} from '../services/my-vars';
 
-interface MyThemeToggleProps {
+interface ThemeToggleProps {
 	themeOptions: MyThemeOptions;
 	onThemeChange: (themeOptions: MyThemeOptions) => void;
 }
 
-export const MyThemeToggle = memo(({themeOptions, onThemeChange}: MyThemeToggleProps) => {
+export const ThemeToggle = memo(({themeOptions, onThemeChange}: ThemeToggleProps) => {
 	const useStyles = makeStyles((/*theme*/) => ({
 		switch: {
 			position: 'absolute',
-			top: `calc(${vars.appBarHeightRems / 2}rem - 19px)`,
+			top: `calc(${myVars.appBarHeightRems / 2}rem - 19px)`,
 			right: 8,
 		},
 	}));

@@ -1,3 +1,3 @@
-export const vars = {
+export const myVars = {
 	appBarHeightRems: 3,
 };
