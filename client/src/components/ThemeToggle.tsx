@@ -13,7 +13,7 @@ export const ThemeToggle = memo(({themeOptions, onThemeChange}: ThemeToggleProps
 	const useStyles = makeStyles((/*theme*/) => ({
 		switch: {
 			position: 'absolute',
-			top: `calc(${myVars.appBarHeightRems / 2}rem - 19px)`,
+			top: `calc(${myVars.mastheadHeightRems / 2}rem - 19px)`,
 			right: 8,
 		},
 	}));

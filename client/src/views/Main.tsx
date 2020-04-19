@@ -25,7 +25,7 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 			padding: 0,
 		},
 		content: {
-			height: `calc(100% - ${myVars.appBarHeightRems}rem)`,
+			height: `calc(100% - ${myVars.mastheadHeightRems}rem)`,
 			overflow: 'auto',
 			backgroundColor: theme.palette.background.default,
 			padding: '1rem 1.5rem',

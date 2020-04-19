@@ -1,3 +1,3 @@
 export const myVars = {
-	appBarHeightRems: 3,
+	mastheadHeightRems: 3,
 };

@@ -15,7 +15,7 @@ export const Masthead = memo(({}: MastheadProps) => {
 		masthead: {
 			display: 'flex',
 			alignItems: 'center',
-			height: `${myVars.appBarHeightRems}rem`,
+			height: `${myVars.mastheadHeightRems}rem`,
 			padding: '0.5rem',
 			lineHeight: '2rem',
 			backgroundImage: `linear-gradient(to right, ${pink[500]}, ${purple[500]})`,
