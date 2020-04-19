@@ -19,7 +19,7 @@ export const MyThemeToggle = memo(({themeOptions, onThemeChange}: MyThemeToggleP
 	}));
 	const classes = useStyles();
 
-	const onChangeTheme = () => {
+	const handleThemeChange = () => {
 		if (onThemeChange) {
 			onThemeChange({isDarkMode: !themeOptions.isDarkMode});
 		}
@@ -28,7 +28,7 @@ export const MyThemeToggle = memo(({themeOptions, onThemeChange}: MyThemeToggleP
 	return (
 		<Switch
 			checked={themeOptions.isDarkMode}
-			onChange={onChangeTheme}
+			onChange={handleThemeChange}
 			name="themeSwitch"
 			color="default"
 			className={classes.switch}

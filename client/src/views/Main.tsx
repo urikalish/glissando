@@ -33,7 +33,7 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 	}));
 	const classes = useStyles();
 
-	const onChangeTheme = (themeOptions: MyThemeOptions) => {
+	const handleThemeChange = (themeOptions: MyThemeOptions) => {
 		if (onThemeChange) {
 			onThemeChange(themeOptions);
 		}
@@ -43,7 +43,7 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 		<Router>
 			<Container maxWidth="xl" className={classes.main}>
 				<MyAppBar />
-				<MyThemeToggle themeOptions={themeOptions} onThemeChange={onChangeTheme} />
+				<MyThemeToggle themeOptions={themeOptions} onThemeChange={handleThemeChange} />
 				<Box className={classes.content}>
 					<Switch>
 						<Route path="/create" exact component={Create} />
