@@ -1,4 +1,6 @@
 import React, {memo} from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
+import useTheme from '@material-ui/core/styles/useTheme';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box/Box';
 import AppBar from '@material-ui/core/AppBar/AppBar';
@@ -14,7 +16,7 @@ export const MyAppBar = memo(({}: MyAppBarProps) => {
 			display: 'flex',
 			alignItems: 'center',
 			height: `${vars.appBarHeightRems}rem`,
-			padding: '1rem',
+			padding: '0.5rem',
 			lineHeight: '2rem',
 			backgroundImage: `linear-gradient(to right, ${pink[500]}, ${purple[500]})`,
 			color: '#fff',
@@ -23,11 +25,19 @@ export const MyAppBar = memo(({}: MyAppBarProps) => {
 			fontSize: '2rem',
 			userSelect: 'none',
 		},
+		myAppBarSmall: {
+			'& $title': {
+				fontSize: '1.5rem',
+			},
+		},
 	}));
 	const classes = useStyles();
 
+	const theme = useTheme();
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
 	return (
-		<AppBar position="static" className={classes.myAppBar}>
+		<AppBar position="static" className={classes.myAppBar + (isSmallScreen ? ' ' + classes.myAppBarSmall : '')}>
 			<Box className={classes.title}>Pixel Glissando</Box>
 		</AppBar>
 	);
