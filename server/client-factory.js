@@ -3,7 +3,8 @@ const helper = require('./helper');
 
 class GlissandoClient {
 	constructor() {
-		this.id = helper.generateRandomName(6);
+		//this.id = helper.generateRandomName(6);
+		this.id = helper.generateRandomId();
 		this.socket = null;
 		this.socketId = '';
 		this.isConnected = false;

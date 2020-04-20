@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box/Box';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import PlusOne from '@material-ui/icons/PlusOne';
-import {useMyBackend} from '../hooks/useMyBackend';
+import {useBackendSocket} from '../hooks/useBackendSocket';
 import {NavLinks} from '../components/NavLinks';
 
 interface HomeProps {}
@@ -32,7 +32,7 @@ export const Home = memo(({}: HomeProps) => {
 	const classes = useStyles();
 
 	const [counter, setCounter] = useState<number>(0);
-	const {backendCounter, incBackendCounter} = useMyBackend();
+	const {backendCounter, incBackendCounter} = useBackendSocket();
 
 	const goInc = async () => {
 		incBackendCounter(counter);
