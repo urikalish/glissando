@@ -5,7 +5,7 @@ class Show {
 	constructor() {
 		this.name = helper.generateRandomName(6);
 		this.id = helper.generateRandomId();
-		logger.log(`show #${this.id} (${this.name}) created`);
+		logger.log(`show created. id:${this.id}, name:${this.name}`);
 	}
 }
 

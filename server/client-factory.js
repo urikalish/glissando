@@ -8,28 +8,28 @@ class GlissandoClient {
 		this.socket = null;
 		this.socketId = '';
 		this.isConnected = false;
-		logger.log(`client #${this.id} (${this.name}) created`);
+		logger.log(`client created. id:${this.id}, name:${this.name}`);
 	}
 
 	onConnect(socket) {
 		this.socket = socket;
 		this.socketId = socket.id;
 		this.isConnected = true;
-		logger.log(`client #${this.id} (${this.name}) connected via socket ${this.socketId}`);
+		logger.log(`client connected. id:${this.id}, name:${this.name}, socket:${this.socketId}`);
 	}
 
 	onDisconnect() {
 		this.isConnected = false;
-		logger.log(`client #${this.id} (${this.name}) disconnected via socket ${this.socketId}`);
+		logger.log(`client disconnected. id:${this.id}, name:${this.name}, socket:${this.socketId}`);
 	}
 
-	onMsgAddOne(data) {
-		if (this.isConnected) {
-			this.socket.emit('s2c-add-one', {
-				val: data.val + 1,
-			});
-		}
-	}
+	// onMsgAddOne(data) {
+	// 	if (this.isConnected) {
+	// 		this.socket.emit('s2c-add-one', {
+	// 			val: data.val + 1,
+	// 		});
+	// 	}
+	// }
 }
 
 exports.createClient = socket => {

@@ -17,21 +17,17 @@ const glissandoShows = {};
 
 const handleClients = io => {
 	io.on('connection', socket => {
-		logger.log(`socket ${socket.id} connected`);
+		logger.log(`socket connected. id:${socket.id}`);
 		const glissandoClient = clientFactory.createClient();
 		glissandoClients[socket.id] = glissandoClient;
 		glissandoClient.onConnect(socket);
 		logger.log(`${Object.keys(glissandoClients).length} clients connected`);
 
 		socket.on('disconnect', () => {
-			logger.log(`socket ${socket.id} disconnected`);
+			logger.log(`socket disconnected. id:${socket.id}`);
 			glissandoClient.onDisconnect();
 			delete glissandoClients[socket.id];
 			logger.log(`${Object.keys(glissandoClients).length} clients connected`);
-		});
-
-		socket.on('c2s-add-one', data => {
-			glissandoClient.onMsgAddOne(data);
 		});
 
 		socket.on('c2s-create-show', () => {
@@ -48,7 +44,7 @@ exports.startServer = () => {
 	expressApp.use(express.static(PUBLIC_DIR));
 	expressApp.get('/', onGetRequest);
 	const expressServer = expressApp.listen(port, () => {
-		logger.log(`listening on port ${port}`);
+		logger.log(`listening. port:${port}`);
 	});
 	const io = socketIo(expressServer);
 	handleClients(io);
