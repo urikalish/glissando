@@ -5,9 +5,9 @@ import Box from '@material-ui/core/Box/Box';
 import Divider from '@material-ui/core/Divider/Divider';
 import {NavLinks} from '../components/NavLinks';
 
-interface RunProps {}
+// interface RunProps {}
 
-export const Run = memo(({}: RunProps) => {
+export const Run = memo((/*{}: RunProps*/) => {
 	const useStyles = makeStyles(theme => ({
 		run: {
 			height: '100%',

@@ -8,9 +8,9 @@ import pink from '@material-ui/core/colors/pink';
 import purple from '@material-ui/core/colors/purple';
 import {myVars} from '../services/my-vars';
 
-interface MastheadProps {}
+// interface MastheadProps {}
 
-export const Masthead = memo(({}: MastheadProps) => {
+export const Masthead = memo((/*{}: MastheadProps*/) => {
 	const useStyles = makeStyles((/*theme*/) => ({
 		masthead: {
 			display: 'flex',

@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Container from '@material-ui/core/Container/Container';
 import Box from '@material-ui/core/Box/Box';
@@ -40,19 +40,17 @@ export const Main = memo(({themeOptions, onThemeChange}: MainProps) => {
 	};
 
 	return (
-		<Router>
-			<Container maxWidth="xl" className={classes.main}>
-				<Masthead />
-				<ThemeToggle themeOptions={themeOptions} onThemeChange={handleThemeChange} />
-				<Box className={classes.content}>
-					<Switch>
-						<Route path="/create" exact component={Create} />
-						<Route path="/join" exact component={Join} />
-						<Route path="/run" exact component={Run} />
-						<Route component={Home} />
-					</Switch>
-				</Box>
-			</Container>
-		</Router>
+		<Container maxWidth="xl" className={classes.main}>
+			<Masthead />
+			<ThemeToggle themeOptions={themeOptions} onThemeChange={handleThemeChange} />
+			<Box className={classes.content}>
+				<Switch>
+					<Route path="/create" exact component={Create} />
+					<Route path="/join" exact component={Join} />
+					<Route path="/run" exact component={Run} />
+					<Route component={Home} />
+				</Switch>
+			</Box>
+		</Container>
 	);
 });

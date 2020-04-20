@@ -5,9 +5,9 @@ import Box from '@material-ui/core/Box/Box';
 import Divider from '@material-ui/core/Divider/Divider';
 import {NavLinks} from '../components/NavLinks';
 
-interface JoinProps {}
+// interface JoinProps {}
 
-export const Join = memo(({}: JoinProps) => {
+export const Join = memo((/*{}: JoinProps*/) => {
 	const useStyles = makeStyles(theme => ({
 		join: {
 			height: '100%',

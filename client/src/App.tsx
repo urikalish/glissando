@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import {BackendSocketContainer} from './hooks/useBackendSocket';
 import {ThemeProvider} from '@material-ui/core/styles';
 import {MyThemeOptions, defaultThemeOptions, createMyTheme} from './services/theme-helper';
 import {Main} from './views/Main';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
 	const [themeOptions, setThemeOptions] = useState(defaultThemeOptions);
@@ -14,7 +16,11 @@ function App() {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Main themeOptions={themeOptions} onThemeChange={onChangeTheme} />
+			<BackendSocketContainer.Provider>
+				<Router>
+					<Main themeOptions={themeOptions} onThemeChange={onChangeTheme} />
+				</Router>
+			</BackendSocketContainer.Provider>
 		</ThemeProvider>
 	);
 }

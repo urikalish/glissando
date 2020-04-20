@@ -1,30 +1,47 @@
 import socketIOClient from 'socket.io-client';
 import {useEffect, useState} from 'react';
+import {createContainer} from 'unstated-next';
 
 export const useBackendSocket = () => {
-	const [connection, setConnection] = useState<SocketIOClient.Socket>();
-	const [backendCounter, setBackendCounter] = useState<number>(0);
+	const [isConnected, setIsConnected] = useState(false);
+	const [socket, setSocket] = useState<SocketIOClient.Socket | null>(null);
 
-	const incBackendCounter = (curVal: number) => {
-		connection && connection.emit('c2s-add-one', {val: curVal});
+	const connect = () => {
+		if (!isConnected) {
+			const socket = socketIOClient(window.location.host);
+			socket.on('connect', () => {
+				setSocket(socket);
+				setIsConnected(true);
+				// socket.on('s2c-add-one', (data: {val: number}) => {
+				// 	setBackendCounter(data.val);
+				// });
+			});
+		}
+	};
+
+	const disconnect = () => {
+		if (isConnected && socket) {
+			socket.emit('disconnect');
+			socket.close();
+			setIsConnected(false);
+			setSocket(null);
+		}
+	};
+
+	const createShow = () => {
+		if (isConnected && socket) {
+			socket.emit('c2s-create-show', {});
+		}
 	};
 
 	useEffect(() => {
-		const socket = socketIOClient(window.location.host);
-
-		socket.on('connect', () => {
-			socket.on('s2c-add-one', (data: {val: number}) => {
-				setBackendCounter(data.val);
-			});
-		});
-
-		setConnection(socket);
-
+		connect();
 		return () => {
-			socket.emit('disconnect');
-			socket.close();
+			disconnect();
 		};
 	}, []);
 
-	return {backendCounter, incBackendCounter};
+	return {isConnected, createShow};
 };
+
+export const BackendSocketContainer = createContainer(useBackendSocket);

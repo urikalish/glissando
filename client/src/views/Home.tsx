@@ -1,16 +1,14 @@
-import React, {memo, useEffect, useMemo, useState} from 'react';
+import React, {memo} from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Typography from '@material-ui/core/Typography/Typography';
 import Box from '@material-ui/core/Box/Box';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
-import PlusOne from '@material-ui/icons/PlusOne';
-import {useBackendSocket} from '../hooks/useBackendSocket';
-import {NavLinks} from '../components/NavLinks';
+import {useHistory} from 'react-router-dom';
 
-interface HomeProps {}
+// interface HomeProps {}
 
-export const Home = memo(({}: HomeProps) => {
+export const Home = memo((/*{}: HomeProps*/) => {
 	const useStyles = makeStyles(theme => ({
 		home: {
 			height: '100%',
@@ -25,39 +23,19 @@ export const Home = memo(({}: HomeProps) => {
 			marginTop: 16,
 			color: theme.palette.text.primary,
 		},
-		incButton: {
+		actionButton: {
 			marginTop: 8,
+			marginRight: 8,
 		},
 	}));
 	const classes = useStyles();
 
-	const [counter, setCounter] = useState<number>(0);
-	const {backendCounter, incBackendCounter} = useBackendSocket();
-
-	const goInc = async () => {
-		incBackendCounter(counter);
+	const history = useHistory();
+	const navigateTo = (e: React.MouseEvent<HTMLElement>) => {
+		if (e.currentTarget.dataset.nav) {
+			history.push(e.currentTarget.dataset.nav || '/');
+		}
 	};
-
-	useEffect(() => {
-		setCounter(backendCounter);
-	}, [backendCounter]);
-
-	const links = useMemo(() => {
-		return [
-			{
-				text: 'Create',
-				to: '/create',
-			},
-			{
-				text: 'Run',
-				to: '/run',
-			},
-			{
-				text: 'Join',
-				to: '/join',
-			},
-		];
-	}, []);
 
 	return (
 		<Box className={classes.home}>
@@ -68,10 +46,14 @@ export const Home = memo(({}: HomeProps) => {
 			</Box>
 			<Divider light />
 			<Box className={classes.content}>
-				<NavLinks links={links} horizontal />
-				<Box className={classes.counter}>{counter}</Box>
-				<Button onClick={goInc} variant="contained" className={classes.incButton}>
-					<PlusOne />
+				<Button data-nav={'/create'} onClick={navigateTo} variant="contained" className={classes.actionButton}>
+					Create
+				</Button>
+				<Button data-nav={'/run'} onClick={navigateTo} variant="contained" className={classes.actionButton}>
+					Run
+				</Button>
+				<Button data-nav={'/join'} onClick={navigateTo} variant="contained" className={classes.actionButton}>
+					join
 				</Button>
 			</Box>
 		</Box>

@@ -2,6 +2,7 @@ const express = require('express');
 const socketIo = require('socket.io');
 const logger = require('./logger');
 const clientFactory = require('./client-factory');
+const showFactory = require('./show-factory');
 
 const PUBLIC_DIR = 'public';
 const DEFAULT_PORT = 5000;
@@ -11,8 +12,10 @@ const onGetRequest = (req, res) => {
 	res.send('Hi from the server');
 };
 
+const glissandoClients = {};
+const glissandoShows = {};
+
 const handleClients = io => {
-	const glissandoClients = {};
 	io.on('connection', socket => {
 		logger.log(`socket ${socket.id} connected`);
 		const glissandoClient = clientFactory.createClient();
@@ -29,6 +32,12 @@ const handleClients = io => {
 
 		socket.on('c2s-add-one', data => {
 			glissandoClient.onMsgAddOne(data);
+		});
+
+		socket.on('c2s-create-show', () => {
+			logger.log(`create show`);
+			const glissandoShow = showFactory.createShow();
+			glissandoShows[glissandoShow.id] = glissandoShow;
 		});
 	});
 };
