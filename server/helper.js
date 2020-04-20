@@ -1,5 +1,7 @@
-exports.generateRandomId = () => {
-	return Math.round(Math.random() * (999999 - 100000) + 100000);
+exports.generateRandomId = length => {
+	const min = Math.pow(10, length - 1);
+	const max = Math.pow(10, length) - 1;
+	return Math.round(Math.random() * (max - min) + min);
 };
 
 exports.generateRandomName = length => {

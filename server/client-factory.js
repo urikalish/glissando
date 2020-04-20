@@ -4,7 +4,7 @@ const helper = require('./helper');
 class GlissandoClient {
 	constructor() {
 		this.name = helper.generateRandomName(6);
-		this.id = helper.generateRandomId();
+		this.id = helper.generateRandomId(6);
 		this.socket = null;
 		this.socketId = '';
 		this.isConnected = false;
